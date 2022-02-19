@@ -3,6 +3,7 @@
   <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
   <div>ddd</div>
   <div>ddd</div>
+  dddd
 </template>
 
 <script lang="ts">
