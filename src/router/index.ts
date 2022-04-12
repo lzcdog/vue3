@@ -28,13 +28,18 @@ const router = createRouter({
   history: createWebHashHistory()
 });
 router.beforeEach((to, from) => {
+  console.log(to);
+  const token = localCacheInstance.getCache('token');
   if (to.path == '/login') {
-    const token = localCacheInstance.getCache('token');
     if (token) {
       router.go(-1);
     }
   } else if (to.path == '/main') {
-    return firstRoute.url;
+    if (!token) {
+      router.push('/login');
+    } else {
+      return firstRoute.url;
+    }
   } else {
     localCacheInstance.getCache('token') ?? router.push('/login');
   }
